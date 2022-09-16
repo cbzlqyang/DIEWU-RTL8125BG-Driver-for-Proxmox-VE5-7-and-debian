@@ -1,5 +1,5 @@
-
-        为Proxmox VE 5/6 快速添加RTL 8125 2.5G网卡驱动,少走点弯路。。。一块由89 RMB TP-link 2.5G 网卡引发的血案。。。       
+            cbzlqyang modified at 20220916         Install driver of DIEWU 4*2.5G network card for PVE 7.2.1 
+            为Proxmox VE 5/6/7 快速添加RTL 8125 2.5G网卡驱动,少走点弯路。。。一块由89 RMB TP-link 2.5G 网卡引发的血案。。。       
 
 
 
@@ -16,9 +16,9 @@ NOT recommended for production use 【不建议生产环境中使用】
 
 PVE pve-no-subscription repository provided by proxmox.com 【非订阅用户软件仓库由proxmox.com提供】
 
-Support Proxmox VE 5.0-6.0 (include 6.2.x) 【支持PVE 5.0-6.0 系统，包括6.2.x 】  
+Support Proxmox VE 5.0-7.0 (include 6.2.x) 【支持PVE 5.0-7.0 系统，包括7.2.x 】  
 
-r8125-9.003.05.tar.bz2 provided by Realtek.com 【r8125-9.003.05.tar.bz2由Realtek官网提供】
+r8125-9.009.02.tar.bz2 provided by Realtek.com 【r8125-9.009.02.tar.bz2由Realtek官网提供】
 
 Support Linux kernel version 2.4 to 5.6   【支持的Linux内核版本，从2.4到5.6】
     
@@ -53,12 +53,3 @@ Support Linux kernel version 2.4 to 5.6   【支持的Linux内核版本，从2.4
 
 
 8.检查模块是否已安装加载   [Check kernel module is exist it]   
-
-	root@hostname# lsmod | grep 'r8125'   	
-	出现 r8125字样即安装成功   [If show 'r8125' that is OK!]
-	
-	
-9.如果出现  modprobe: ERROR: could not insert r8125: Invalid argument，请重启系统再运行一遍脚本即可。
-		
-[If show modprobe: ERROR: could not insert r8125: Invalid argument appears, please restart the system and run the script again.]        		
-	
