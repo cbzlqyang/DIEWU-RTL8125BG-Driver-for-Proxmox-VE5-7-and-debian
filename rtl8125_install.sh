@@ -61,13 +61,27 @@ fi
 # NOT recommended for production use 【不建议生产环境中使用】
 # PVE pve-no-subscription repository provided by proxmox.com 【非订阅用户软件仓库由proxmox.com提供】
 
-if [ "$PVE_Main_version" == 6 ]; then
+
+if [ "$PVE_Main_version" == 7 ]; then
+	# add PVE 7.0 no subcript to apt source.list
+                # 官网非订阅源 
+                # echo 'deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription' >> /etc/apt/sources.list.d/pve-no-subscription.list
+                # 清华非订阅源
+	echo 'deb http://mirrors.ustc.edu.cn/proxmox/debian/pve bullseye pve-no-subscription' >> /etc/apt/sources.list.d/pve-no-subscription.list
+	echo 'adding no subcript source to /etc/apt/sources.list.d/pve-no-subscription.list.....'
+elif [ "$PVE_Main_version" == 6 ]; then
 	# add PVE 6.0 no subcript to apt source.list
-	echo 'deb http://download.proxmox.com/debian/pve buster pve-no-subscription' > /etc/apt/sources.list.d/pve-no-subscription.list
+                # 官网非订阅源 
+                # echo 'deb http://download.proxmox.com/debian/pve buster pve-no-subscription' > /etc/apt/sources.list.d/pve-no-subscription.list
+                # 清华非订阅源
+	echo 'deb http://mirrors.ustc.edu.cn/proxmox/debian/pve buster pve-no-subscription' > /etc/apt/sources.list.d/pve-no-subscription.list
 	echo 'adding no subcript source to /etc/apt/sources.list.d/pve-no-subscription.list.....'
 elif [ "$PVE_Main_version" == 5 ]; then
 	# add PVE 5.0 no subcript to apt source.list
-	echo 'deb http://download.proxmox.com/debian stretch pve-no-subscription' > /etc/apt/sources.list.d/pve-no-subscription.list
+                # 官网非订阅源 
+	# echo 'deb http://download.proxmox.com/debian stretch pve-no-subscription' > /etc/apt/sources.list.d/pve-no-subscription.list
+                # 清华非订阅源
+                echo 'deb http://mirrors.ustc.edu.cn/proxmox/debian/pve stretch pve-no-subscription' > /etc/apt/sources.list.d/pve-no-subscription.list
 	echo 'adding no subcript source to /etc/apt/sources.list.d/pve-no-subscription.list.....'
 else 
 	echo 'Your system is not Proxmox VE that No deb source add to apt source.list.'
@@ -87,8 +101,8 @@ apt-get install ${kernel_headers_latest_version} ${kernel_image_latest_version}
 apt-get -y install dkms build-essential make gcc libelf-dev
 
 
-tar vjxf $PWD/r8125-9.003.05.tar.bz2
-cd r8125-9.003.05
+tar vjxf $PWD/r8125-9.009.02.tar.bz2
+cd r8125-9.009.02
 
 chmod a+x autorun.sh
 ./autorun.sh
